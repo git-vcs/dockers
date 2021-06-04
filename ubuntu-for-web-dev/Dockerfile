@@ -7,4 +7,6 @@ RUN apt-get update; apt-get upgrade -y; apt-get install nodejs npm nano mc git -
 RUN useradd -ms /bin/bash oneuser
 USER oneuser
 RUN echo "alias yarn='/usr/local/lib/node_modules/yarn/bin/yarn'" >> /home/oneuser/.bash_aliases
+RUN yarn global add serve
+RUN echo "alias serve='/home/oneuser/.yarn/bin/serve'" >> /home/oneuser/.bash_aliases
 WORKDIR /code/

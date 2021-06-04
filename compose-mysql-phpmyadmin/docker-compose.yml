@@ -1,0 +1,45 @@
+version: "2"
+
+networks:
+  devnet:
+    ipam:
+      driver: "default"
+      config:
+        - subnet: "172.18.0.0/16"
+
+services:
+  db:
+    image: mysql:latest
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: dev-pw
+      MYSQL_DATABASE: website
+    ports: 
+      - 3306:3306
+    networks:
+      devnet:
+          ipv4_address: 172.18.0.3
+  phpaadmin:
+    image: phpmyadmin
+    restart: "no"
+    ports: 
+      - 8081:80
+    networks:
+      - devnet
+    links: 
+      - db
+    environment:
+       PMA_ARBITRARY: 1
+       PMA_HOST: 172.18.0.3
+       PMA_PORT: 3306
+       PMA_USER: root
+       PMA_PASSWORD: dev-pw
+    
+
+
+
+
+
+
+
+
