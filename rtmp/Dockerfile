@@ -12,11 +12,15 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # adding sudo and other programs
 RUN apt-get install sudo htop git nano mc nginx-full libnginx-mod-rtmp -y
 ADD /nginx.conf /etc/nginx/
-#RUN chmod rw r r /etc/nginx/nginx.conf
+ADD startserver.sh /
+RUN chmod 777 /startserver.sh
 RUN useradd -ms /bin/bash oneuser
 RUN passwd -d oneuser
 RUN adduser oneuser sudo
 USER oneuser
- 
+EXPOSE 1935/udp
+EXPOSE 1935/tcp
+
+CMD ["/bin/bash","./startserver.sh"]
 
 
