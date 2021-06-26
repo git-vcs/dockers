@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  rtmp-streamer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    environment:
+      dummy: ""
+      ##url: "ipadress/live/b"
+    devices: 
+      - /dev/video2
+    tty: true

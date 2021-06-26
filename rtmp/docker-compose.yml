@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  rtmp-streamer:
+    build:
+      context: rtmp-encoder/
+      dockerfile: Dockerfile
+    environment:
+      url: "rtmp-server/live/b"
+    devices: 
+      - /dev/video2
+  rtmp-server:
+    build:
+      context: rtmp-server/
+      dockerfile: Dockerfile.ubuntu
+    stdin_open: true
+    tty: true
+    ports:
+      - "1935:1935"
