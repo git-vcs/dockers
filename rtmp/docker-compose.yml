@@ -2,13 +2,14 @@ version: "3"
 
 services:
   rtmp-streamer:
+    cpus: "1.00"
     build:
       context: rtmp-encoder/
       dockerfile: Dockerfile
     environment:
       url: "rtmp-server/live/b"
     devices: 
-      - /dev/video2
+      - /dev/video0
   rtmp-server:
     build:
       context: rtmp-server/
