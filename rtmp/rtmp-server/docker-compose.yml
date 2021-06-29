@@ -3,7 +3,7 @@ services:
   rtmp-server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.ubuntu
     stdin_open: true
     tty: true
     ports:
