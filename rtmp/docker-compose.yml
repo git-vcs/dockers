@@ -2,11 +2,11 @@ version: "3"
 
 services:
   rtmp-streamer:
-    cpus: "1.00"
     build:
       context: rtmp-encoder/
       dockerfile: Dockerfile
     environment:
+      FFMPEG_THREADS: "1"    
       url: "rtmp-server/live/b"
     devices: 
       - /dev/video0

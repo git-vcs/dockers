@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
     stdin_open: true
     environment:
-      dummy: ""
-      ##url: "ipadress/live/b"
+      FFMPEG_THREADS: "2"      
+      url: "rtmp-server/live/b"
     devices: 
       - /dev/video2
     tty: true
