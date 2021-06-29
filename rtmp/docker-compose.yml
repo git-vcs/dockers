@@ -2,6 +2,7 @@ version: "3"
 
 services:
   rtmp-streamer:
+    restart: unless-stopped
     build:
       context: rtmp-encoder/
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
     devices: 
       - /dev/video0
   rtmp-server:
+    restart: unless-stopped
     build:
       context: rtmp-server/
       dockerfile: Dockerfile.ubuntu
