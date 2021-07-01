@@ -8,7 +8,8 @@ services:
     stdin_open: true
     environment:
       FFMPEG_THREADS: "2"      
-      url: "rtmp-server/live/b"
+      url: "192.168.0.18:1935/live/a"
     devices: 
-      - /dev/video2
+      - /dev/video0:/dev/video0
+      - /dev/snd/:/dev/snd/
     tty: true

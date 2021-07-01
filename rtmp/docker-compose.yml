@@ -8,8 +8,10 @@ services:
     environment:
       FFMPEG_THREADS: "1"    
       url: "rtmp-server/live/b"
+## note do not change the internal device names
     devices: 
-      - /dev/video0
+      - /dev/video0:/dev/video0
+      - /dev/snd/:/dev/snd/
   rtmp-server:
     build:
       context: rtmp-server/
