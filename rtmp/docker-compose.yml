@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
     build:
       context: rtmp-server/
-      dockerfile: Dockerfile.ubuntu
+      dockerfile: Dockerfile.alpine
     stdin_open: true
     tty: true
     ports:

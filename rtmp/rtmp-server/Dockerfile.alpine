@@ -9,17 +9,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # adding nginx
 RUN apk add --update
 RUN apk add sudo  
-RUN apk add nginx
+RUN adduser -DG www-data www-data
 RUN apk add bash
-##RUN apk add libnginx-mod-rtmp
+RUN apk add nginx nginx-rtmp
+
 ADD /nginx.conf /etc/nginx/
 ADD startserver.sh /
 RUN chmod 777 /startserver.sh
-##RUN useradd -ms /bin/bash oneuser
-##RUN passwd -d oneuser
-##RUN adduser oneuser sudo
-##USER oneuser
 EXPOSE 1935/udp
 EXPOSE 1935/tcp
+
+#for debug
+#RUN apk add htop nano mc 
 
 CMD ["/bin/sh","./startserver.sh"]
