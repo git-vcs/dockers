@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: testdb
+      POSTGRES_DB: testdb
+      POSTGRES_USER: test
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    depends_on:
+      - postgres
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: postgres
+      ADMINER_DEFAULT_DB_HOST: postgres
+      ADMINER_DEFAULT_DB_NAME: testdb
+      ADMINER_DEFAULT_DB_SERVER: postgres 
+    ports:
+      - 8080:8080
